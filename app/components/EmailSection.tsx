@@ -7,43 +7,44 @@ import GithubIcon from "../../public/images/github.svg";
 import LinkedInIcon from "../../public/images/linkedin.svg";
 import {motion,useInView} from "framer-motion";
 
+const contactVariants = {
+  initial: { x: 50, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  
+}
 const EmailSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref,{once:true});
+  const isInView = useInView(ref, { once: true });
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  console.log(isInView);
-  
-  const contactVariants = {
-    initial: { x: 50, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    
-  }
-  const handleSubmit = async (e: any) => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
+      email: form.email.value,
+      subject: form.subject.value,
+      message: form.message.value,
     };
 
-    const endpoint = "/api/send";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
+    try {
+      const endpoint = "/api/send";
+      const options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      };
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
-    if (response.status === 200) {
-      setEmailSubmitted(true);
-    } else {
+      const response = await fetch(endpoint, options);
+      if (response.ok) {
+        setEmailSubmitted(true);
+        setEmailError(false);
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (error) {
       setEmailError(true);
     }
-
   };
   return (
     <section
