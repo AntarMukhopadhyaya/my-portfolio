@@ -27,12 +27,12 @@ export default function HeroSection() {
             <TypeAnimation
               sequence={[
                 "Antar",
-                1000,
+                5000,
                 "A Web Developer",
-                1000,
+                5000,
 
                 "A Data Science Enthusiast",
-                1000,
+                5000,
               ]}
               wrapper="span"
               speed={50}
