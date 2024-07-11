@@ -1,14 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import GithubIcon from "../../public/images/github.svg";
 import LinkedInIcon from "../../public/images/linkedin.svg";
+import {motion,useInView} from "framer-motion";
 
 const EmailSection = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref,{once:true});
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  console.log(isInView);
+  
+  const contactVariants = {
+    initial: { x: 50, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    
+  }
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = {
@@ -33,6 +43,7 @@ const EmailSection = () => {
     } else {
       setEmailError(true);
     }
+
   };
   return (
     <section
@@ -40,7 +51,7 @@ const EmailSection = () => {
       id="contact"
     >
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 -translate-x-1/2 -translate-1/2"></div>
-      <div>
+      <motion.div ref={ref} variants={contactVariants} initial="initial" animate={isInView ? "animate" : "initial"} transition={{duration:0.5}} >
         <h5 className="text-xl font-bold text-white my-2">Let's Connect</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
@@ -58,8 +69,8 @@ const EmailSection = () => {
             <Image src={LinkedInIcon} alt="LinkedIn Icon" />
           </Link>
         </div>
-      </div>
-      <div className="mt-2">
+      </motion.div>
+      <motion.div className="mt-2" ref={ref} variants={contactVariants} initial="initial" animate={isInView ? "animate": "initial"}>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <div className="mb-6">
             <label
@@ -124,7 +135,7 @@ const EmailSection = () => {
             </p>
           )}
         </form>
-      </div>
+      </motion.div>
     </section>
   );
 };
