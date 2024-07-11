@@ -21,7 +21,7 @@ export async function POST(
 
   try {
     const { data, error } = await resend.emails.send({
-      from: fromEmail ,
+      from: fromEmail,
       text: subject + "\n\n" + message,
       to: ["mukhopadhyayaantar@gmail.com", email],
       subject: subject,

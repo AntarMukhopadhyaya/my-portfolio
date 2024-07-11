@@ -5,7 +5,8 @@ import { TypeAnimation } from "react-type-animation";
 import useDownloader from "react-use-downloader";
 import Link from "next/link";
 export default function HeroSection() {
-  const {size, elapsed,percentage,download,cancel,error,isInProgress} = useDownloader();
+  const { size, elapsed, percentage, download, cancel, error, isInProgress } =
+    useDownloader();
   const fileName = "Resume.pdf";
   const fileUrl = "/docs/Resume.pdf";
   return (
@@ -20,12 +21,11 @@ export default function HeroSection() {
             <TypeAnimation
               sequence={[
                 "Antar",
-                1000, // wait 1s before replacing "Mice" with "Hamsters"
-                "Web Developer",
                 1000,
-                "Cyber Security Enthusiast",
+                "A Web Developer",
                 1000,
-                "Data Science Enthusiast",
+
+                "A Data Science Enthusiast",
                 1000,
               ]}
               wrapper="span"
@@ -43,10 +43,17 @@ export default function HeroSection() {
             projects.
           </p>
           <div>
-            <Link href="https://www.upwork.com/freelancers/~017f4578939b548399"  target="_blank" className="px-10 py-4 w-full sm:w-fit bg-gradient-to-br from-yellow-500 via-orange-500 to-green-500 rounded-full mr-4 bg-white hover:bg-slate-200 text-white  ">
+            <Link
+              href="https://www.upwork.com/freelancers/~017f4578939b548399"
+              target="_blank"
+              className="px-10 py-4 w-full sm:w-fit bg-gradient-to-br from-yellow-500 via-orange-500 to-green-500 rounded-full mr-4 bg-white hover:bg-slate-200 text-white  "
+            >
               Hire Me
             </Link>
-            <button onClick={() => download(fileUrl,fileName)} className="px-6 w-full sm:w-fit py-3 rounded-full bg-transparent hover:bg-slate-800 text-white border border-white mt-3">
+            <button
+              onClick={() => download(fileUrl, fileName)}
+              className="px-6 w-full sm:w-fit py-3 rounded-full bg-transparent hover:bg-slate-800 text-white border border-white mt-3"
+            >
               Download CV
             </button>
           </div>

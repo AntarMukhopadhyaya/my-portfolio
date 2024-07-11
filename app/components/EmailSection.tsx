@@ -8,6 +8,7 @@ import LinkedInIcon from "../../public/images/linkedin.svg";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const data = {
@@ -27,8 +28,10 @@ const EmailSection = () => {
 
     const response = await fetch(endpoint, options);
     const resData = await response.json();
-    if (resData.status === "success") {
+    if (response.status === 200) {
       setEmailSubmitted(true);
+    } else {
+      setEmailError(true);
     }
   };
   return (
@@ -41,10 +44,11 @@ const EmailSection = () => {
         <h5 className="text-xl font-bold text-white my-2">Let's Connect</h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
           {" "}
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae saepe
-          voluptates doloremque laudantium culpa non, fugiat illo, dignissimos
-          perspiciatis illum praesentium voluptate labore, quis sed incidunt
-          repudiandae perferendis aliquid delectus.
+          I'm always excited to connect with fellow tech enthusiasts, potential
+          collaborators, and anyone interested in web development, machine
+          learning, and cyber security. Whether you have a question, a project
+          idea, or just want to say hello, feel free to reach out! .Let's create
+          something amazing together.
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://github.com/AntarMukhopadhyaya/">
@@ -112,6 +116,11 @@ const EmailSection = () => {
           {emailSubmitted && (
             <p className="text-green-500 text-sm mt-2">
               Email sent successfully!
+            </p>
+          )}
+          {emailError && (
+            <p className="text-red-500 text-sm mt-2">
+              Email could not be sent. Please try again.
             </p>
           )}
         </form>
