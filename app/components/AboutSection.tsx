@@ -9,13 +9,24 @@ const TAB_DATA = [
     id: "skills",
     content: (
       <ul className="list-disc pl-2">
-        <li>PHP</li>
-        <li>PYTHON</li>
-        <li>LARAVEL</li>
-        <li>DJANGO</li>
-        <li>REACT JS</li>
-        <li>TAILWIND CSS</li>
-        <li>POSTGRESQL</li>
+        <li className="my-1"><span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">PHP</span></li>
+        <li><span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">PYTHON</span></li>
+        <li className="my-1"><span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">LARAVEL</span></li>
+        <li className="my-1">
+          <span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">
+          DJANGO
+          </span>
+          </li>
+        <li>
+          <span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">
+            React JS
+          </span>
+        </li>
+        <li className="my-1">
+        <span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">TAILWIND CSS
+        </span>
+        </li>
+        <li><span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-primary text-white dark:bg-blue-100 dark:text-neutral-800">POSTGRESQL</span></li>
       </ul>
     ),
   },
@@ -93,7 +104,6 @@ const AboutSection = () => {
                 {" "}
                 Education
               </TabButton>
-             
             </div>
             <div className="mt-8">
               {TAB_DATA.find((t) => t.id == tab)?.content}

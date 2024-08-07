@@ -33,7 +33,7 @@ const PROJECT_DATA = [
       "A phishing detection tool made using Python, Django and Machine Learning",
     image: "images/phishcatcher.png",
     gitUrl: "https://github.com/AntarMukhopadhyaya/PhisCatcher",
-    tags: ["ALL", "PYTHON", "DJANGO", "MACHINE LEARNING"],
+    tags: ["ALL", "PYTHON", "DJANGO", "ML"],
   },
   {
     id: 4,
@@ -43,8 +43,18 @@ const PROJECT_DATA = [
     image: "images/hackspire.png",
     gitUrl: "https://github.com/AntarMukhopadhyaya/acm-hackathon-next",
     liveUrl: "https://www.fiem-hackspire.com/",
-    tags: ["ALL", "NEXT JS", "REACT JS", "TYPESCRIPT"],
+    tags: ["ALL", "NEXT JS", "REACT JS", "TYPESCRIPT", "JS"],
   },
+   {
+    id: 5 ,
+    title: "Fraud Warden",
+    description: "Fraud Warden is a next-generation credit card fraud detection system that uses machine learning to predict whether a transaction is fraudulent or not.",
+    image: "images/fraud-warden.png",
+    gitUrl: "https://github.com/AntarMukhopadhyaya/Fraud-Warden",
+    tags: ["ALL", "PYTHON", "ML"],
+    liveUrl: "https://lwrcqux9tf4lansdcptgc8.streamlit.app/"
+   }
+
 ];
 const ProjectSection = () => {
   const [tag, setTag] = useState("ALL");
@@ -75,13 +85,20 @@ const ProjectSection = () => {
         />
         <ProjectTag
           onClick={handleTagChange}
-          name="LARAVEL"
-          isSelected={tag === "LARAVEL"}
+          name="PYTHON"
+          isSelected={tag === "PYTHON"}
         />
+       
         <ProjectTag
           onClick={handleTagChange}
-          name="DJANGO"
-          isSelected={tag === "DJANGO"}
+          name="ML"
+          isSelected={tag === "ML"}
+        />
+      
+         <ProjectTag
+          onClick={handleTagChange}
+          name="JS"
+          isSelected={tag === "JS"}
         />
       </div>
       <ul className="grid md:grid-cols-3 gap-8 md:gap-12" ref={ref}>
